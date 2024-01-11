@@ -1,0 +1,307 @@
+Zadanie 4.4
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    #animated-text {
+      font-size: 16px;
+      transition: font-size 0.5s ease;
+      cursor: pointer;
+    }
+  </style>
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <title>Text Animation</title>
+</head>
+<body>
+
+<p id="animated-text">Najedź myszą na ten tekst!</p>
+
+<script>
+  $(document).ready(function () {
+    $("#animated-text").hover(
+      function () {
+        $(this).animate({ fontSize: '20px' }, 500);
+      },
+      function () {
+        $(this).animate({ fontSize: '16px' }, 500);
+      }
+    );
+  });
+</script>
+
+</body>
+</html>
+
+
+
+Zadanie 4.5
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      #animated-image {
+        position: relative;
+        left: 0;
+        top: 0;
+        transition: left 0.5s ease, top 0.5s ease;
+        cursor: pointer;
+      }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <title>Image Animation</title>
+  </head>
+  <body>
+    <img id="animated-image" src="OIP.jpg" alt="Mouse Image" />
+
+    <script>
+      $(document).ready(function () {
+        const originalPosition = { left: 0, top: 0 };
+
+        $("#animated-image").hover(
+          function () {
+            // New position when mouse is over the image
+            const newPosition = { left: 50, top: 50 };
+            $(this).animate(newPosition, 500);
+          },
+          function () {
+            // Return to the original position when mouse leaves the image
+            $(this).animate(originalPosition, 500);
+          }
+        );
+      });
+    </script>
+  </body>
+</html>
+
+
+
+
+Zadanie 4.6
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+
+    #header, #paragraph, #button {
+      margin: 20px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+  </style>
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <title>Animations</title>
+</head>
+<body>
+
+<div id="header">Nagłówek</div>
+<div id="paragraph">To jest przykładowy paragraf.</div>
+<button id="button">Kliknij mnie</button>
+
+<script>
+  $(document).ready(function () {
+    // Animacja dla nagłówka
+    $("#header").hover(
+      function () {
+        $(this).animate({ fontSize: '24px' }, 300);
+      },
+      function () {
+        $(this).animate({ fontSize: '16px' }, 300);
+      }
+    );
+
+    // Animacja dla paragrafu
+    $("#paragraph").click(function () {
+      $(this).animate({ marginLeft: '50px' }, 500, function () {
+        // Po zakończeniu animacji można wykonać dodatkowe operacje
+        $(this).animate({ marginLeft: '0' }, 500);
+      });
+    });
+
+    // Animacja dla przycisku
+    $("#button").hover(
+      function () {
+        $(this).css({ backgroundColor: '#4CAF50', color: 'white' });
+      },
+      function () {
+        $(this).css({ backgroundColor: '', color: '' });
+      }
+    );
+  });
+</script>
+
+</body>
+</html>
+
+zadanie 4.7
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 20px;
+    }
+
+    li {
+      display: inline-block;
+      margin-right: 20px;
+      position: relative;
+    }
+
+    .tooltip {
+      display: none;
+      position: absolute;
+      border: 1px solid #ccc;
+      background-color: #f9f9f9;
+      padding: 10px;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      z-index: 999;
+    }
+  </style>
+  <title>Menu with Tooltips</title>
+</head>
+<body>
+
+<ul>
+  <li class="menu-item" data-tooltip="To jest pierwsza opcja menu">Opcja 1</li>
+  <li class="menu-item" data-tooltip="To jest druga opcja menu">Opcja 2</li>
+  <li class="menu-item" data-tooltip="To jest trzecia opcja menu">Opcja 3</li>
+</ul>
+
+<script>
+  $(document).ready(function () {
+    $(".menu-item").tooltip({
+      content: function () {
+        return $(this).data('tooltip');
+      },
+      track: true
+    });
+  });
+</script>
+
+</body>
+</html>
+
+zad 4.8
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registration Form</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+  <h2>Registration Form</h2>
+  <form id="registrationForm">
+    <label for="firstName">First Name:</label>
+    <input type="text" id="firstName" name="firstName" required>
+
+    <label for="lastName">Last Name:</label>
+    <input type="text" id="lastName" name="lastName" required>
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" required>
+
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password" minlength="6" required>
+
+    <label for="confirmPassword">Confirm Password:</label>
+    <input type="password" id="confirmPassword" name="confirmPassword" equalTo="#password" required>
+
+    <input type="submit" value="Register">
+  </form>
+</div>
+
+<script>
+  $(document).ready(function () {
+    $("#registrationForm").validate({
+      rules: {
+        firstName: "required",
+        lastName: "required",
+        email: {
+          required: true,
+          email: true
+        },
+        password: {
+          required: true,
+          minlength: 6
+        },
+        confirmPassword: {
+          required: true,
+          equalTo: "#password"
+        }
+      },
+      messages: {
+        firstName: "Please enter your first name",
+        lastName: "Please enter your last name",
+        email: {
+          required: "Please enter your email address",
+          email: "Please enter a valid email address"
+        },
+        password: {
+          required: "Please enter a password",
+          minlength: "Your password must be at least 6 characters long"
+        },
+        confirmPassword: {
+          required: "Please confirm your password",
+          equalTo: "Passwords do not match"
+        }
+      },
+      errorElement: "span",
+      errorPlacement: function (error, element) {
+        error.addClass("error-message");
+        error.insertAfter(element);
+      },
+      highlight: function (element, errorClass, validClass) {
+        $(element).addClass("error-input");
+      },
+      unhighlight: function (element, errorClass, validClass) {
+        $(element).removeClass("error-input");
+      }
+    });
+  });
+</script>
+
+</body>
+</html>
